@@ -1,0 +1,14 @@
+p_name 5 450
+p_xp 150 470
+p_time 840 300
+p_level 5 470
+p_hp 5 490
+p_mp 100 490
+p_damage 200 490
+p_attack 300 490
+p_ac 400 490
+p_gold 250 510
+p_str 5 510
+p_dex 110 510
+invent 800 20
+spells 800 350

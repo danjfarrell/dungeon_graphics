@@ -1,0 +1,13 @@
+game_data/resources/graphics/full_duck_1.bmp 0 0 998 75
+game_data/resources/graphics/full_duck_2.bmp 0 76 998 75
+game_data/resources/graphics/full_duck_3.bmp 0 151 998 75
+game_data/resources/graphics/background.bmp 0 0 512 480
+game_data/resources/graphics/foreground.bmp 0 293 512 189
+game_data/resources/graphics/dog.bmp 0 0 1187 96
+game_data/resources/graphics/pause.bmp 0 0 98 66
+game_data/resources/graphics/fly_away.bmp 0 0 146 33
+game_data/resources/graphics/bullet.bmp 0 0 8 14
+game_data/resources/graphics/hit_duck.bmp 0 0 14 15
+game_data/resources/graphics/hits.bmp 0 0 226 36
+game_data/resources/graphics/shots.bmp 0 0 52 34
+game_data/resources/graphics/fired.bmp 0 0 0 0

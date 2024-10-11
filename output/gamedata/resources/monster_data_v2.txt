@@ -1,0 +1,7 @@
+NAME LV AC DAM ATT DEF GEN INT GOLD HP EXP SP Symbol
+na 0 0 0 0 0 0 3 0 0 0 0 ~
+bat 1 0 1 0 0 0 3 0 1 1 0 B
+jackal 1 17 1 0 0 0 4 0 1 1 0 J
+hobgoblin 1 14 2 0 0 0 5 25 3 2 0 H
+gnome 1 10 1 0 0 0 8 30 2 2 0 G
+kobold 1 20 1 0 0 0 7 10 1 1 0 K

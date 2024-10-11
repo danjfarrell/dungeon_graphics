@@ -1,0 +1,76 @@
+1,.
+2,a holy altar
+3,a handsome jewel encrusted throne
+4,a massive throne
+5,the orb
+6,a pit
+7,a staircase leading upwards
+8,a bubbling fountain
+9,a dead fountain
+10,a great marble statue
+11,a mirror
+12,a staircase going down
+13,an open door
+14,a closed door
+15,an arrow trap
+16,an arrow trap
+17,a dart trap
+18,a dart trap
+19,a trapdoor
+20,a trapdoor
+21,a teleport trap
+22,a teleport trap
+23,a sphere of annihilation
+24,the college of Larn
+25,the dungeon entrance
+26,a volcanic shaft leaning downward
+27,your home
+28,the Larn Revenue Service
+29,the DND store
+30,the bank of Larn
+31,the 5th branch of the Bank of Larn
+32,the local trading post
+33,The Eye of Larn
+34,plate mail
+35,chain mail
+36,leather armor
+37,ring mail
+38,studded leather armor
+39,splint mail
+40,plate armor
+41,stainless plate armor
+42,shield
+43,sword of slashing
+44,Bessman's flailing hammer
+45,sunsword
+46,two handed sword
+47,spear
+48,dagger
+49,battle axe
+50,longsword
+51,flail
+52,lance of death
+53,ring of extra regeneration
+54,a ring of regeneration
+55,a ring of protection
+56,an energy ring
+57,a ring of dexterity
+58,a ring of strength
+59,a ring of cleverness
+60,a ring of increase damage
+61,a belt of striking
+62,a magic scroll
+63,a magic potion
+64,a book
+65,a chest
+66,a fortune cookie
+67,an amulet of invisibility
+68,an orb of dragon slaying
+69,a scarab of negate spirit
+70,a cube of undead control
+71,device of theft prevention
+72,a brilliant diamond
+73,a ruby
+74,an enchanting emerald
+75,a sparkling sapphire
+76,.

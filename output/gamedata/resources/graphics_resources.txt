@@ -1,0 +1,4 @@
+2
+gamedata/resources/graphics/curvebox.bmp 0 0 256 256
+gamedata/resources/graphics/direction_arrows.bmp 0 0 64 256
+

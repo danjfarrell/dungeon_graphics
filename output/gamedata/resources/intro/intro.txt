@@ -1,0 +1,16 @@
+scene=0
+fade_in=0.080000
+fade_out=0.080000
+hold=25.000000
+scene=1
+fade_in=0.080000
+fade_out=0.080000
+hold=25.000000
+scene=2
+fade_in=0.080000
+fade_out=0.080000
+hold=25.000000
+scene=3
+fade_in=0.080000
+fade_out=0.000000
+hold=0.000000

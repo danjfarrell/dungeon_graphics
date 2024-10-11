@@ -1,0 +1,7 @@
+5
+gamedata/resources/graphics/curvebox.bmp 0 0 256 256
+gamedata/resources/graphics/bordertop.bmp 0 0 256 16
+gamedata/resources/graphics/bordertop.bmp 0 0 256 16
+gamedata/resources/graphics/borderleft.bmp 0 0 16 16
+gamedata/resources/graphics/borderright.bmp 0 0 16 16
+
