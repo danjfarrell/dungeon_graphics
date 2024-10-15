@@ -32,7 +32,7 @@ private:
     
     bool init_needed;
 
-FILE *output_check;
+    //FILE *output_check;
 
 public:
 

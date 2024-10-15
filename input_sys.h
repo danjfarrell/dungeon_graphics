@@ -304,6 +304,8 @@ class Input_sys
 
     bool get_input();
 
+    bool mouse_events();
+
     bool streaming_mode();
     bool single_mode();
 

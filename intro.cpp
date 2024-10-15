@@ -1,4 +1,5 @@
 #include "intro.h"
+#include "core_engine.h"
 
 Intro::Intro()
 {
@@ -23,25 +24,31 @@ bool Intro::load_data(Core_Engine &core)
      printf("load data start\n");
      srand ((unsigned int)time(NULL));
      int n;
-
+     errno_t err;
      FILE *iFile;
      char filename[200];
-     iFile = fopen("gamedata/resources/intro/intro.dat","r");
-     if (iFile == NULL)
+     err = fopen_s(&iFile,"gamedata/resources/intro/intro.dat","r");
+     if (err == 0)
      {
-         printf("load intro.dat failed\n");
-         fclose(iFile);
+         printf("The file 'gamedata/resources/intro/intro.dat' was opened\n");
+         
+     }
+     else
+     {
+         printf("The file 'gamedata/resources/intro/intro.dat' was not opened\n");
+         //fclose(iFile);
          return false;
      }
-     n=fscanf(iFile,"%i\n",&num_screens);
+     
+     n=fscanf_s(iFile,"%i\n",&num_screens);
      
      printf("\nnum_screens:%i\n",num_screens);
 
 	 for(int i=0;i<num_screens;i++)
  	 {
             splash temp;
-            n=fscanf(iFile,"%s\n",filename);
-    	    n=fscanf(iFile,"%i\n%i\n%i\n",&temp.fade_in_frame,&temp.hold,&temp.fade_out_frame);
+            n=fscanf_s(iFile,"%s\n",filename,sizeof(filename));
+    	    n=fscanf_s(iFile,"%i\n%i\n%i\n",&temp.fade_in_frame,&temp.hold,&temp.fade_out_frame);
 
     	    temp.fade_in_frame=temp.fade_in_frame*FRAMES_PER_SECOND;
 
@@ -76,7 +83,7 @@ bool Intro::load_data(Core_Engine &core)
             s_screen.push_back(temp);
 
       }
-      n = fscanf(iFile,"%i\n%i\n",&text_pos_x,&text_pos_y);
+      n = fscanf_s(iFile,"%i\n%i\n",&text_pos_x,&text_pos_y);
 
       fclose(iFile);
 

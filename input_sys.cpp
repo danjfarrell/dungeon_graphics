@@ -293,39 +293,7 @@ bool Input_sys::get_input()
     //printf("get input, repeat=%d\n",repeat);
         while( SDL_PollEvent( &event ) )
         {
-            SDL_GetMouseState( &mouse_x, &mouse_y );
-            if( event.type== SDL_MOUSEMOTION )
-            {
-                  mouse_move_x=event.motion.x;
-                  mouse_move_y=event.motion.y;
-            }
-
-            if( event.type == SDL_MOUSEBUTTONDOWN )
-            {
-                //If the left mouse button was pressed
-                if( event.button.button == SDL_BUTTON_LEFT )
-                {
-                    mouse_button_x=event.button.x;
-                    mouse_button_y=event.button.y;
-                    mouse_button_left=1;
-                }
-                if( event.button.button == SDL_BUTTON_RIGHT )
-                {
-                    mouse_button_right=1;
-                }
-            }
-            if( event.type == SDL_MOUSEBUTTONUP )
-            {
-                //If the left mouse button was pressed
-                if( event.button.button == SDL_BUTTON_LEFT )
-                {
-                    mouse_button_left=-1;
-                }
-                if( event.button.button == SDL_BUTTON_RIGHT )
-                {
-                    mouse_button_right=-1;
-                }
-            }
+            
 
             //If the user has Xed out the window
             if (event.type == SDL_QUIT)
@@ -334,6 +302,10 @@ bool Input_sys::get_input()
                 return true;
             }
 
+            if (!mouse_events())
+            {
+                return true;
+            }
 
             if (mode == 0)
             {
@@ -355,6 +327,46 @@ bool Input_sys::get_input()
      return false;
 }
 
+
+bool Input_sys::mouse_events()
+{
+    SDL_GetMouseState(&mouse_x, &mouse_y);
+    if (event.type == SDL_MOUSEMOTION)
+    {
+        mouse_move_x = event.motion.x;
+        mouse_move_y = event.motion.y;
+    }
+
+    if (event.type == SDL_MOUSEBUTTONDOWN)
+    {
+        //If the left mouse button was pressed
+        if (event.button.button == SDL_BUTTON_LEFT)
+        {
+            mouse_button_x = event.button.x;
+            mouse_button_y = event.button.y;
+            mouse_button_left = 1;
+        }
+        if (event.button.button == SDL_BUTTON_RIGHT)
+        {
+            mouse_button_right = 1;
+        }
+    }
+    if (event.type == SDL_MOUSEBUTTONUP)
+    {
+        //If the left mouse button was pressed
+        if (event.button.button == SDL_BUTTON_LEFT)
+        {
+            mouse_button_left = -1;
+        }
+        if (event.button.button == SDL_BUTTON_RIGHT)
+        {
+            mouse_button_right = -1;
+        }
+    }
+
+    return true;
+
+}
 
 bool Input_sys::streaming_mode()
 {

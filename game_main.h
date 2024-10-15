@@ -10,8 +10,8 @@
 
 #include "constants.h"
 
-//#include "intro.h"
-//#include "play.h"
+#include "intro.h"
+#include "play.h"
 //#include "title.h"
 
 #include "core_engine.h"
@@ -35,8 +35,8 @@ public:
 	Core_Engine core;
 
 	
-	//Play play;
-	//Intro intro;
+	Play play;
+	Intro intro;
 	//Title title;
 	//Game_Over game_over;
 	//Load_Game load_game;

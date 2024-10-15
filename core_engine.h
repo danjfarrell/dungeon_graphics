@@ -4,8 +4,8 @@
 #include <stdio.h>
 
 #include "SDL.h"
-//#include "input_sys.h"
-//#include "display_engine.h"
+#include "input_sys.h"
+#include "display_engine.h"
 //#include "constants.h"
 //#include "gamemap.h"
 ////#include "game_defines.h"
@@ -28,8 +28,10 @@ public:
 	Core_Engine();
 
     bool Init();
-	//Display_Engine disp;
-	//Input_sys input;
+	Display_Engine disp;
+	Input_sys input;
+	
+
 	//Game_Data game_data;
 	//Gamemap game_map;
 	//Inventory inventory;

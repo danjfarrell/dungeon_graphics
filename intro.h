@@ -7,10 +7,13 @@
 #include <stdlib.h>     /* atoi */
 #include <time.h>
 #include <string.h>
+#include <string>
 #include <iostream>
 #include "input_sys.h"
 #include "core_engine.h"
 #include "constants.h"
+
+//class Core_Engine;
 
 typedef struct
 {
