@@ -27,12 +27,12 @@ void Play::load_data(Core_Engine &core)
     
     temp = core.disp.Load_Texture("gamedata/resources/graphics/dungeon/cave.png", textures, texture_size);
     
-    
-    
+    core.play_state = OVERWORLD;
+    core.game_map.load_data(core);
     //core.disp.Build_bmp_font("gamedata/resources/graphics/Redjack17.bmp");
     
     /*
-    core.game_map.load_data(core);
+    
     
     core.play_state = OVERWORLD;
     core.ui_display.UI_Load(core);
@@ -61,14 +61,16 @@ bool Play::play_run_main(Core_Engine &core)
             init_needed=false;
             
         }
-        SDL_Rect temp_size = texture_size[0];
-        SDL_Rect temp_clipped = { 0, 0, 16, 16 };
-        temp_size.h = temp_clipped.h*2;
-        temp_size.w = temp_clipped.w * 2;
+        //SDL_Rect temp_size = texture_size[0];
+        //SDL_Rect temp_clipped = { 0, 0, 16, 16 };
+        //temp_size.h = temp_clipped.h*2;
+        //temp_size.w = temp_clipped.w * 2;
 
         //core.disp.Apply_Texture(0, temp_size, textures);
-        core.disp.Apply_clipped_texture(textures[0], &temp_size, &temp_clipped);
-        /*
+        //core.disp.Apply_clipped_texture(textures[0], &temp_size, &temp_clipped);
+
+
+        
         switch (core.play_state)
         {
 
@@ -143,7 +145,7 @@ bool Play::play_run_main(Core_Engine &core)
                         }
                     break;
         }
-        */
+        
 
 
                 //if((core.input.KEY_RETURN==1)&&(core.input.KEY_RETURN_up==true))

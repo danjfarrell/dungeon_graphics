@@ -1,8 +1,10 @@
 #ifndef GAME_DATA_H
 #define GAME_DATA_H
 
-#include "constants.h"
+
 #include <stdio.h>
+#include <vector>
+#include "constants.h"
 //#include "game_defines.h"
 //#include "player.h"
 
@@ -648,7 +650,8 @@ int prev_state_y{};
     SDL_Rect display_characters_sizepos[256]{};
    
     //SDL_Rect  dungeon_texture_layout[MAX_Y][MAX_X + 1];
-    bool level_visited[MAX_DUNGEON_LEVEL]{};
+    //bool level_visited[MAX_DUNGEON_LEVEL]{};
+    std::vector<bool> level_visited;
 
     MAP_BLOCK dungeon_level[MAX_Y][MAX_X + 1]{};
 

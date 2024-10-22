@@ -6,17 +6,17 @@
 #include "SDL.h"
 #include "input_sys.h"
 #include "display_engine.h"
-//#include "constants.h"
-//#include "gamemap.h"
+#include "constants.h"
+#include "gamemap.h"
 ////#include "game_defines.h"
-//#include "game_data.h"
+#include "game_data.h"
 //#include "constants.h"
 //#include "monsters.h"
 //#include "spells.h"
 //#include "ui_display.h"
 //#include "objects.h"
 //#include "player.h"
-//#include "build_level.h"
+#include "build_level.h"
 //#include "inventory.h"
 //#include "shop.h"
 
@@ -32,20 +32,20 @@ public:
 	Input_sys input;
 	
 
-	//Game_Data game_data;
-	//Gamemap game_map;
+	Game_Data game_data;
+	Gamemap game_map;
 	//Inventory inventory;
 	//Player player;
 	//Spells spells;
 	//UI_Display  ui_display;
-	//Build_Level build_level;
+	Build_Level build_level;
 	//Objects objects;
 	//Monsters monsters;
 	//Shop shop;
 	
 	
 	//Play_State previous;
-	//Play_State play_state;
+	Play_State play_state;
 
 
 

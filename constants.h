@@ -123,6 +123,12 @@ enum Player_Input_States{PLAYER_MOVEMENT,PLAYER_CASTING,PLAYER_EQUIPPING,PLAYER_
 
 typedef struct
 {
+    int texture_id;
+    SDL_Rect size_pos;
+} MAP_BLOCK_ElEMENT;
+
+typedef struct
+{
     //unsigned char block_type;
     unsigned int block_type;
     bool player_loc;
@@ -133,16 +139,19 @@ typedef struct
     bool building;
     int monster_index;
     //unsigned char monster_symbol;
-    int item_index;
-    unsigned char item_symbol;
-    int object_index;
-    unsigned char object_symbol;
+    //int item_index;
+    //unsigned char item_symbol;
+    //int object_index;
+    //unsigned char object_symbol;
     int gold_value;
     int prox_ripple_value;
     bool visible;
     bool spell;
-    Text_Colors color;  //white=1
+    MAP_BLOCK_ElEMENT block_data;
+    //Text_Colors color;  //white=1
 } MAP_BLOCK;
+
+
 
 typedef struct
 {

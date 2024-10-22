@@ -57,49 +57,43 @@ public:
      int num_files;
 
 
-	 unsigned char dungeon[MAX_Y][MAX_X+1];
+	 //unsigned char dungeon[MAX_Y][MAX_X+1];
 
-	 MAP_BLOCK dungeon_level[MAX_Y][MAX_X+1];
+	 //MAP_BLOCK dungeon_level[MAX_Y][MAX_X+1];
 
-     bool level_visited[MAX_DUNGEON_LEVEL];
+     //bool level_visited[MAX_DUNGEON_LEVEL];
 
      int current_level;
      //SDL_Texture*  gamemap_texture;
     //SDL_Rect      gamemap_texture_size;
      //int           gamemap_texture_id;
 
-     std::vector<int> play_texture;
+     /*std::vector<int> play_texture;
 
     std::vector<SDL_Texture*> textures_list;
 
     std::vector<SDL_Rect> texture_size_list;
 
-     std::vector<SDL_Rect> size_pos;
+     std::vector<SDL_Rect> size_pos;*/
 
-     int texture;
+     //int texture;
 
     FILE *output_check;
     bool one_pass_check;
 
     Gamemap();
     ~Gamemap();
-    //void load_data(Display_Engine &disp);
-    //bool run(Display_Engine &disp,Input_sys &input);
+
+
+
     void clean_up();
-    //void new_level();
 
 
-    //void load_data(Display_Engine &disp, MAP_BLOCK dungeon_level[MAX_Y][MAX_X+1]);
+
+
     void load_data(Core_Engine &core);
-    //bool run(Display_Engine &disp,Input_sys &input, MAP_BLOCK dungeon_level[MAX_Y][MAX_X+1]);
-    //bool run(Display_Engine &disp,Input_sys &input, Game_Data &game_data);
+
     bool run(Core_Engine &core);
-    //void new_level(MAP_BLOCK dungeon_level[MAX_Y][MAX_X+1]);
-    //void new_level(Game_Data &game_data,int destination,Player &player, Objects &objects,Build_Level &build_level);
-
-    //void save_level(Game_Data &game_data);
-
-   // void change_level(Game_Data &game_data,int destination,Player &player, Objects &objects,Build_Level &build_level);
 
 };
 #endif
