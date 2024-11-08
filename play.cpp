@@ -188,6 +188,7 @@ bool Play::run_start_screen(Core_Engine &core)
 }
 bool Play::run_overworld(Core_Engine &core)
 {
+    core.game_map.run(core);
     //core.disp.Disp_Text("overworld!", FONT_1, { 35,55,28 }, 125, 475);
     //printf("overworld\n");
     /*

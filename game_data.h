@@ -653,6 +653,8 @@ int prev_state_y{};
     //bool level_visited[MAX_DUNGEON_LEVEL]{};
     std::vector<bool> level_visited;
 
+    std::vector< MAP_BLOCK_ElEMENT> map_blocks;
+
     MAP_BLOCK dungeon_level[MAX_Y][MAX_X + 1]{};
 
 };

@@ -85,7 +85,12 @@ bool Intro::load_data(Core_Engine &core)
       }
       n = fscanf_s(iFile,"%i\n%i\n",&text_pos_x,&text_pos_y);
 
-      fclose(iFile);
+      //fclose(iFile);
+      if (iFile != NULL) {
+          fclose(iFile);
+          iFile = NULL;
+      }
+
 
     script_not_done=false;
     init_needed=false;

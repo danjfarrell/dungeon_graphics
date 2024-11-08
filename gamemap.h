@@ -70,14 +70,15 @@ public:
 
      /*std::vector<int> play_texture;
 
-    std::vector<SDL_Texture*> textures_list;
+    
 
     std::vector<SDL_Rect> texture_size_list;
 
-     std::vector<SDL_Rect> size_pos;*/
+     */
 
      //int texture;
-
+     std::vector<SDL_Texture*> textures_list;
+     std::vector<SDL_Rect> size_pos;
     FILE *output_check;
     bool one_pass_check;
 

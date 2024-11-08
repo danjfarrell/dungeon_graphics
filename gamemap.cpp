@@ -6,7 +6,7 @@ Gamemap::Gamemap()
 {
     printf("game map \n");
     //one_pass_check = false;
- 
+
 }
 Gamemap::~Gamemap()
 {
@@ -17,7 +17,13 @@ Gamemap::~Gamemap()
 void Gamemap::load_data(Core_Engine &core)
 {
     //char filename[200];
+    int temp;
 
+
+
+    //loading texture of dungeon to see them
+
+    temp = core.disp.Load_Texture("gamedata/resources/graphics/dungeon/cave.png", textures_list, size_pos);
 
     srand ( (unsigned int)time(NULL));
 
@@ -65,7 +71,7 @@ void Gamemap::load_data(Core_Engine &core)
 
 bool Gamemap::run(Core_Engine &core)
 {
-
+    
         /*
         y_min= core.player.y-AREA_Y;
         //y_min = 0;
@@ -107,18 +113,21 @@ bool Gamemap::run(Core_Engine &core)
         x_count=0;
         y_count=0;
         */
+        y_min = 0;
+        y_max = MAX_Y;
 
-
+        x_min = 0;
+        x_max = MAX_X;
 
         if (!one_pass_check)
         {
-            //output_check = fopen("map_check.txt", "w");
+            output_check = fopen("map_check.txt", "w");
         }
-
+        //printf("%d,%d\n", y_min, y_max);
         for(int y=y_min;y<y_max;y++)
         {
             x_count=0;
-            
+            //printf("here7\n");
             for(int x=x_min;x<x_max;x++)
             {
 
@@ -129,11 +138,27 @@ bool Gamemap::run(Core_Engine &core)
                 if((!core.game_data.dungeon_level[y][x].visible)||(core.game_data.dungeon_level[y][x].block_type==' '))
                 {
                     //display nothing
+                    //printf("here1\n");
                     
+                }
+                else if ((core.game_data.dungeon_level[y][x].block_type == '.') || (core.game_data.dungeon_level[y][x].block_type == '#'))
+                {
+                    //core.game_data.dungeon_level[i][j].block_data.texture_id
+                   
+                    SDL_Rect size;
+                    int text_id;
+                    size.h = 16;
+                    size.w = 16;
+                    size.x = x * 16;
+                    size.y = y * 16;
+                    text_id = core.game_data.dungeon_level[y][x].block_data.texture_id;
+                    //printf("%d \n", text_id);
+                    core.disp.Apply_clipped_texture(textures_list[0], &size, &core.game_data.map_blocks[text_id].size_pos);
+                   // core.disp.Apply_clipped_texture(textures_list[0], &size, &core.game_data.map_blocks[core.game_data.dungeon_level[y][x].block_data.texture_id].size_pos);
                 }
                 else if (core.game_data.dungeon_level[y][x].spell)
                 {
-                    
+                    //printf("here2\n");
                 }
                 /*
                 else if ((x==core.player.x) && (y==core.player.y))
@@ -145,7 +170,7 @@ bool Gamemap::run(Core_Engine &core)
                 */               
                 else if(core.game_data.dungeon_level[y][x].monster)
                 {
-
+                    //printf("here3\n");
                         /*
                         if(core.monsters.level_monsters[core.game_data.dungeon_level[y][x].monster_index].alive)
                         {
@@ -156,6 +181,7 @@ bool Gamemap::run(Core_Engine &core)
                 }
 			    else if(core.game_data.dungeon_level[y][x].object)
                 {
+                    //printf("here4\n");
                     /*
                     int index_value = core.game_data.dungeon_level[y][x].object_index;
                     
@@ -175,13 +201,13 @@ bool Gamemap::run(Core_Engine &core)
                 }
                 else if(core.game_data.dungeon_level[y][x].gold)
                 {
-
+                    //printf("here5\n");
                     //core.disp.Apply_BMP_FONT_Texture(x_pos,y_pos,'*',GOLD,FONT_SIZE);
                 }
 
 				else 
                 {
-                    
+                    //printf("here6\n");
                 }
             }
             y_count++;
@@ -195,7 +221,11 @@ bool Gamemap::run(Core_Engine &core)
 
         if (!one_pass_check)
         {
-            fclose(output_check);
+            //fclose(output_check);
+            if (output_check != NULL) {
+                fclose(output_check);
+                output_check = NULL;
+            }
         }
         one_pass_check = true;
 

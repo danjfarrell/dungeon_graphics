@@ -20,8 +20,11 @@ Display_Engine::Display_Engine()
 
 Display_Engine::~Display_Engine()
 {
-    fclose(color_font_check); 
-   
+    //fclose(color_font_check); 
+    if (color_font_check != NULL) {
+        fclose(color_font_check);
+        color_font_check = NULL;
+    }
 
 }
 
