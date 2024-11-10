@@ -34,42 +34,28 @@ void  Build_Level::printTextureMap(Core_Engine& core) {
         result.clear();
         for (int j = 0; j < MAX_X; j++)
         {
-            //core.game_data.dungeon_level[i][j].block_type = '#';
             result.push_back(core.game_data.dungeon_level[i][j].block_type);
 
-            // Push characters into the string
 
         }
-        //fprintf(output_check, "%s\n", result.c_str());
         printf("%s\n", result.c_str());
     }
     printf("\n");
-    //result.clear();
-    //temp1.clear();
     for (int i = 0; i < MAX_Y; i++)
     {
         result.clear();
         for (int j = 0; j < MAX_X; j++)
         {
-            //core.game_data.dungeon_level[i][j].block_type = '#';
-            //result.push_back(core.game_data.dungeon_level[i][j].block_type);
 
             result += std::to_string(core.game_data.dungeon_level[i][j].block_data.texture_id);
 
-            // Push characters into the string
 
         }
-        //fprintf(output_check, "%s\n", result.c_str());
         printf("%s\n", result.c_str());
     }
 
 
-    /*for (const auto& row : textureMap) {
-        for (int tile : row) {
-            cout << tile << " ";
-        }
-        cout << endl;
-    }*/
+
     
 }
 
@@ -251,9 +237,7 @@ void Build_Level::make_maze(int level,Core_Engine &core)
 
 
 
-            if (i == 0) {
-                printf("%d,%d,%d,%d,%d\n", j, up, down, left, right);
-            }
+
             //FLOOR = 25, WALL = 2, INTERSECTION = 6,VERTICAL = 11, HORIZONTAL = 15
             // CORNER_TOP_LEFT = 4, CORNER_TOP_RIGHT = 3, CORNER_BOTTOM_LEFT = 9, CORNER_BOTTOM_RIGHT = 16,  
             // T_INTERSECTION_UP = 1,  T_INTERSECTION_DOWN = 8, T_INTERSECTION_LEFT = 2,  T_INTERSECTION_RIGHT = 7,
@@ -288,9 +272,7 @@ void Build_Level::make_maze(int level,Core_Engine &core)
             else if (center && left && right) {
                 core.game_data.dungeon_level[i][j].block_data.texture_id = HORIZONTAL;
 
-                if (i == 0) {
-                    printf("here %d,%d,%d,%d,%d\n", j, up, down, left, right);
-                }
+
             }
             else if (center && up && left) {
                 core.game_data.dungeon_level[i][j].block_data.texture_id = CORNER_BOTTOM_RIGHT;
@@ -318,142 +300,11 @@ void Build_Level::make_maze(int level,Core_Engine &core)
             }
         }
     }
-    printTextureMap(core);
+    //printTextureMap(core);
 
-    /*
-    for (int i = 0; i < MAX_Y; i++)
-    {
-        result.clear();
-        temp1.clear();
-        for (int j = 0; j < MAX_X; j++)
-        {
-            if ((i == 0) && (j == 0)) {
-                core.game_data.dungeon_level[i][j].block_data.texture_id = 3;
-            }else if ((i == MAX_Y - 1) && (j == 0)) {
-                core.game_data.dungeon_level[i][j].block_data.texture_id = 8;
-            }
-            else if ((i == 0) && (j == (MAX_X - 1))) {
-                core.game_data.dungeon_level[i][j].block_data.texture_id = 5;
-            }
-            else if ((i == MAX_Y - 1) && (j == (MAX_X - 1))) {
-                core.game_data.dungeon_level[i][j].block_data.texture_id = 15;
-            }
-            else if ((i == 0) || (i == MAX_Y - 1)) {
-                core.game_data.dungeon_level[i][j].block_data.texture_id = 4;
-            }
-            else if ((j == 0) || (j == MAX_X - 1)) {
-                core.game_data.dungeon_level[i][j].block_data.texture_id = 10;
-            }
-            else if (core.game_data.dungeon_level[i][j].block_type == '#') {
-                x1 = core.game_data.dungeon_level[i - 1][j-1].block_type + core.game_data.dungeon_level[i - 1][j].block_type + core.game_data.dungeon_level[i - 1][j + 1].block_type;
-                x2 = core.game_data.dungeon_level[i][j].block_type + core.game_data.dungeon_level[i][j - 1].block_type + core.game_data.dungeon_level[i][j + 1].block_type;
-                x3 = core.game_data.dungeon_level[i + 1][j].block_type + core.game_data.dungeon_level[i + 1][j - 1].block_type + core.game_data.dungeon_level[i + 1][j + 1].block_type;
-                y1 = core.game_data.dungeon_level[i-1][j-1].block_type + core.game_data.dungeon_level[i][j-1].block_type + core.game_data.dungeon_level[i + 1][j - 1].block_type;
-                y2 = core.game_data.dungeon_level[i-1][j].block_type + core.game_data.dungeon_level[i][j].block_type + core.game_data.dungeon_level[i + 1][j].block_type;
-                y3 = core.game_data.dungeon_level[i-1][j+1].block_type + core.game_data.dungeon_level[i][j+1].block_type + core.game_data.dungeon_level[i + 1][j+1].block_type;
-                if (x2 == 105) {
-                    //16,4,7,1
-                    if (y2 == 105) {
-                        core.game_data.dungeon_level[i][j].block_data.texture_id = 16;
-                    }
-                    else if ((x1 == 105) && (x3 == 105)) {
-                        core.game_data.dungeon_level[i][j].block_data.texture_id = 4;
-                    }
-                    else if ((x1 == 105) && (y2 == 127)) {
-                        core.game_data.dungeon_level[i][j].block_data.texture_id = 1;
-                    }
-                    else{
-                        core.game_data.dungeon_level[i][j].block_data.texture_id = 7;
-                    }
-                }
-                else if (x2 == (116)) {
-                    //2,3,5,6,8,9,13,15
-                    if (y2 == 105) {
-                        if (y1 == 127) {
-                            core.game_data.dungeon_level[i][j].block_data.texture_id = 2;
-                        }
-                        else {
-                            core.game_data.dungeon_level[i][j].block_data.texture_id = 6;
-                        }
-                        //core.game_data.dungeon_level[i][j].block_data.texture_id = 16;
-                    }
-                    else if (y2 == 127) {
-                        if (y1 == 127) {
-                            core.game_data.dungeon_level[i][j].block_data.texture_id = 9;
-                        }
-                        else {
-                            core.game_data.dungeon_level[i][j].block_data.texture_id = 13;
-                        }
-                    }
-                    else if (y2 == 116) {
-                        if (y1 == 116) {
-                            if (x1 == 127) {
-                                core.game_data.dungeon_level[i][j].block_data.texture_id = 15;
-                            }
-                            else {
-                                core.game_data.dungeon_level[i][j].block_data.texture_id = 5;
-                            }
-                        }
-                        else {
-                            if (x1 == 127) {
-                                core.game_data.dungeon_level[i][j].block_data.texture_id = 8;
-                            }
-                            else {
-                                core.game_data.dungeon_level[i][j].block_data.texture_id = 3;
-                            }
-                        }
-                    }
-                }
-                else if (x2 == 127) {
-                    if (y2 == 127) {
-                        core.game_data.dungeon_level[i][j].block_data.texture_id = 10;
-                    }
-                    else if (x1 == 127) {
-                        core.game_data.dungeon_level[i][j].block_data.texture_id = 11;
-                    }
-                    else {
-                        core.game_data.dungeon_level[i][j].block_data.texture_id = 11;
-                    }
-                }
-                else {
-                    core.game_data.dungeon_level[i][j].block_data.texture_id = 99;
-                }
-
-                result += "x=" + std::to_string(j) + " y=" + std::to_string(i) +
-                    " x1=" + std::to_string(x1) + " x2=" + std::to_string(x2) +
-                    " x3=" + std::to_string(x3) + " y1=" + std::to_string(y1) +
-                    " y2=" + std::to_string(y2) + " y3=" + std::to_string(y3) +
-                    " type= " + std::to_string(core.game_data.dungeon_level[i][j].block_data.texture_id) + " " +
-                    std::to_string(core.game_data.dungeon_level[i][j].block_type) + " here\n";
-            }
-            else {
-                core.game_data.dungeon_level[i][j].block_data.texture_id = 25;
-                result += "x=" + std::to_string(j) + " y=" + std::to_string(i) +
-                    " x1=" + std::to_string(x1) + " x2=" + std::to_string(x2) +
-                    " x3=" + std::to_string(x3) + " y1=" + std::to_string(y1) +
-                    " y2=" + std::to_string(y2) + " y3=" + std::to_string(y3) +
-                    " type= " + std::to_string(core.game_data.dungeon_level[i][j].block_data.texture_id) + " " +
-                    std::to_string(core.game_data.dungeon_level[i][j].block_type) + " here2\n";
-            }
-                
-            
-            
-            //core.game_data.dungeon_level[i][j].block_type = '#';
-            temp1 = temp1 + std::to_string(core.game_data.dungeon_level[i][j].block_data.texture_id);
-
-
-            // Push characters into the string
-            //printf("here in build_level 1\n");
-        }
-        //result += "\n";
-        //fprintf(output_check, "%s\n", result.c_str());
-    }
-    */
-
-    //printf("here in build_level\n");
+   
 
     fclose(output_check);
-    //printf("here in build_level\n");
     return;
 }
 

@@ -51,15 +51,38 @@ Game_Data::Game_Data()
 
     }
     
-    MAP_BLOCK_ElEMENT temp1;
-    //********** 0 ***************
-    temp1.texture_id = 0;
-    temp1.size_pos.h = 16;
-    temp1.size_pos.w = 16;
-    temp1.size_pos.x = 0;
-    temp1.size_pos.y = 0;
-    map_blocks.push_back(temp1);
+    FILE* textures;
+    errno_t err;
+    err = fopen_s(&textures, "gamedata/resources/graphics/dungeon/texture_list.txt", "r");
 
+    if (err == 0)
+    {
+        printf("The file 'crt_fopen_s.c' was opened\n");
+    }
+    else
+    {
+        printf("The file 'crt_fopen_s.c' was not opened\n");
+    }
+    int num_entries,tx,ty,th,tw,tn,n;
+    fscanf(textures, "%d\n", &num_entries);
+    MAP_BLOCK_ElEMENT temp1;
+    for (int i = 0; i < num_entries; i++)
+    {
+        n= fscanf(textures, "%d %d %d %d %d\n", &tn, &th, &tw, &tx, &ty);
+        printf("%d %d %d %d %d\n", tn, th, tw, tx, ty);
+        temp1.texture_id = tn;
+        temp1.size_pos.h = th;
+        temp1.size_pos.w = tw;
+        temp1.size_pos.x = tx;
+        temp1.size_pos.y = ty;
+        map_blocks.push_back(temp1);
+    }
+
+
+ 
+    //********** 0 ***************
+
+    /*
     //********** 1 ***************
     temp1.texture_id = 1;
     temp1.size_pos.h = 16;
@@ -240,7 +263,7 @@ Game_Data::Game_Data()
     temp1.size_pos.x = 128;
     temp1.size_pos.y = 48;
     map_blocks.push_back(temp1);
-
+    */
     //printf("map_blocks size = %d\n", map_blocks.size());
 }
 
