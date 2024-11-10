@@ -18,6 +18,64 @@ Build_Level::~Build_Level()
     //load_monster_data();
 }
 
+bool  Build_Level::isWall(Core_Engine& core, int y, int x) {
+    //return x >= 0 && x < map.size() && y >= 0 && y < map[0].size() && map[x][y] == '#';
+    if ((x < 0) || (y < 0) || (y >= MAX_Y) || (x>=MAX_X)){
+        return false;
+    }
+    return x >= 0 && x < MAX_X && y >= 0 && y < MAX_Y && core.game_data.dungeon_level[y][x].block_type == '#';
+}
+
+void  Build_Level::printTextureMap(Core_Engine& core) {
+    
+    std::string result,temp1;  // Initialize an empty string
+    for (int i = 0; i < MAX_Y; i++)
+    {
+        result.clear();
+        for (int j = 0; j < MAX_X; j++)
+        {
+            //core.game_data.dungeon_level[i][j].block_type = '#';
+            result.push_back(core.game_data.dungeon_level[i][j].block_type);
+
+            // Push characters into the string
+
+        }
+        //fprintf(output_check, "%s\n", result.c_str());
+        printf("%s\n", result.c_str());
+    }
+    printf("\n");
+    //result.clear();
+    //temp1.clear();
+    for (int i = 0; i < MAX_Y; i++)
+    {
+        result.clear();
+        for (int j = 0; j < MAX_X; j++)
+        {
+            //core.game_data.dungeon_level[i][j].block_type = '#';
+            //result.push_back(core.game_data.dungeon_level[i][j].block_type);
+
+            result += std::to_string(core.game_data.dungeon_level[i][j].block_data.texture_id);
+
+            // Push characters into the string
+
+        }
+        //fprintf(output_check, "%s\n", result.c_str());
+        printf("%s\n", result.c_str());
+    }
+
+
+    /*for (const auto& row : textureMap) {
+        for (int tile : row) {
+            cout << tile << " ";
+        }
+        cout << endl;
+    }*/
+    
+}
+
+
+
+
 void Build_Level::make_maze(int level,Core_Engine &core)
 {
     //FILE *dungeon_check=fopen("dungeon_check.txt","w");
@@ -62,6 +120,11 @@ void Build_Level::make_maze(int level,Core_Engine &core)
                 }
             }
             eat_rock(level,1,1, core);
+
+            if (core.game_data.dungeon_level[1][1].block_type == '#' && core.game_data.dungeon_level[1][2].block_type == '.')
+            {
+                core.game_data.dungeon_level[1][1].block_type = '.';
+            }
 
 
             /*  not sure what this does
@@ -167,18 +230,101 @@ void Build_Level::make_maze(int level,Core_Engine &core)
             // Push characters into the string
             
         }
-        //fprintf(output_check, "%s\n", result.c_str());
+        fprintf(output_check, "%s\n", result.c_str());
     }
 
     result = "\n";
     int x1=0, x2 = 0, x3 = 0, y1 = 0, y2 = 0, y3=0;
 
-   // std::string temp1;
+    std::string temp1;
     //fprintf(output_check, "%s\n", result.c_str());
+
+    for (int i = 0; i < MAX_Y; i++)
+    {
+        for (int j = 0; j < MAX_X; j++)
+        {
+            bool up = isWall( core , i - 1, j);
+            bool down = isWall(core, i + 1, j);
+            bool left = isWall(core, i, j - 1);
+            bool right = isWall(core, i, j + 1);
+            bool center = isWall(core, i, j);
+
+
+
+            if (i == 0) {
+                printf("%d,%d,%d,%d,%d\n", j, up, down, left, right);
+            }
+            //FLOOR = 25, WALL = 2, INTERSECTION = 6,VERTICAL = 11, HORIZONTAL = 15
+            // CORNER_TOP_LEFT = 4, CORNER_TOP_RIGHT = 3, CORNER_BOTTOM_LEFT = 9, CORNER_BOTTOM_RIGHT = 16,  
+            // T_INTERSECTION_UP = 1,  T_INTERSECTION_DOWN = 8, T_INTERSECTION_LEFT = 2,  T_INTERSECTION_RIGHT = 7,
+            // END_LEFT = 10,  END_RIGHT = 14,  END_UP = 13,END_DOWN = 12,
+                
+            if (!center)
+            {
+                core.game_data.dungeon_level[i][j].block_data.texture_id = FLOOR;
+            }
+            else if (center && up && down && left && right) {
+                core.game_data.dungeon_level[i][j].block_data.texture_id = INTERSECTION;
+            }
+            else if (center && up && down && (left || right)) {
+                if (left) {
+                    core.game_data.dungeon_level[i][j].block_data.texture_id = T_INTERSECTION_LEFT;
+                }
+                else {
+                    core.game_data.dungeon_level[i][j].block_data.texture_id = T_INTERSECTION_RIGHT;
+                }
+            }
+            else if (center && left && right && (up || down)) {
+                if (up) {
+                    core.game_data.dungeon_level[i][j].block_data.texture_id = T_INTERSECTION_DOWN;
+                }
+                else {
+                    core.game_data.dungeon_level[i][j].block_data.texture_id = T_INTERSECTION_UP;
+                }
+            }
+            else if (center && up && down) {
+                core.game_data.dungeon_level[i][j].block_data.texture_id = VERTICAL;
+            }
+            else if (center && left && right) {
+                core.game_data.dungeon_level[i][j].block_data.texture_id = HORIZONTAL;
+
+                if (i == 0) {
+                    printf("here %d,%d,%d,%d,%d\n", j, up, down, left, right);
+                }
+            }
+            else if (center && up && left) {
+                core.game_data.dungeon_level[i][j].block_data.texture_id = CORNER_BOTTOM_RIGHT;
+            }
+            else if (center && up && right) {
+                core.game_data.dungeon_level[i][j].block_data.texture_id = CORNER_BOTTOM_LEFT;
+            }
+            else if (center && down && left) {
+                core.game_data.dungeon_level[i][j].block_data.texture_id = CORNER_TOP_LEFT;
+            }
+            else if (center  && down && right) {
+                core.game_data.dungeon_level[i][j].block_data.texture_id = CORNER_TOP_RIGHT;
+            }
+            else if (center && up) {
+                core.game_data.dungeon_level[i][j].block_data.texture_id = END_UP;
+            }
+            else if (center && right) {
+                core.game_data.dungeon_level[i][j].block_data.texture_id = END_RIGHT;
+            }
+            else if (center && left) {
+                core.game_data.dungeon_level[i][j].block_data.texture_id = END_LEFT;
+            }
+            else if (center && down) {
+                core.game_data.dungeon_level[i][j].block_data.texture_id = END_DOWN;
+            }
+        }
+    }
+    printTextureMap(core);
+
+    /*
     for (int i = 0; i < MAX_Y; i++)
     {
         result.clear();
-       // temp1.clear();
+        temp1.clear();
         for (int j = 0; j < MAX_X; j++)
         {
             if ((i == 0) && (j == 0)) {
@@ -293,7 +439,7 @@ void Build_Level::make_maze(int level,Core_Engine &core)
             
             
             //core.game_data.dungeon_level[i][j].block_type = '#';
-            //temp1 = temp1 + std::to_string(core.game_data.dungeon_level[i][j].block_data.texture_id);
+            temp1 = temp1 + std::to_string(core.game_data.dungeon_level[i][j].block_data.texture_id);
 
 
             // Push characters into the string
@@ -302,9 +448,11 @@ void Build_Level::make_maze(int level,Core_Engine &core)
         //result += "\n";
         //fprintf(output_check, "%s\n", result.c_str());
     }
+    */
+
     //printf("here in build_level\n");
 
-    //fclose(output_check);
+    fclose(output_check);
     //printf("here in build_level\n");
     return;
 }

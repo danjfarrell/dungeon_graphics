@@ -54,9 +54,9 @@ public:
 	//Input_sys input;
 	//Play play;
 
-	bool done;
+	//bool done;
 
-    bool complete;
+    //bool complete;
 
     SDL_Rect size_pos;
     SDL_Rect sprite_info;

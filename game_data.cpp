@@ -52,6 +52,7 @@ Game_Data::Game_Data()
     }
     
     MAP_BLOCK_ElEMENT temp1;
+    //********** 0 ***************
     temp1.texture_id = 0;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
@@ -59,31 +60,36 @@ Game_Data::Game_Data()
     temp1.size_pos.y = 0;
     map_blocks.push_back(temp1);
 
-
+    //********** 1 ***************
     temp1.texture_id = 1;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
     temp1.size_pos.x = 0;
     temp1.size_pos.y = 0;
     map_blocks.push_back(temp1);
+    
+    //********** 2 ***************
     temp1.texture_id = 2;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
     temp1.size_pos.x = 16;
     temp1.size_pos.y = 0;
     map_blocks.push_back(temp1);
+    //********** 3 ***************
     temp1.texture_id = 3;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
     temp1.size_pos.x = 32;
     temp1.size_pos.y = 0;
     map_blocks.push_back(temp1);
+    //********** 4 ***************
     temp1.texture_id = 4;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
     temp1.size_pos.x = 48;
     temp1.size_pos.y = 0;
     map_blocks.push_back(temp1);
+    //********** 5 ***************
     temp1.texture_id = 5;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
@@ -91,74 +97,85 @@ Game_Data::Game_Data()
     temp1.size_pos.y = 0;
     map_blocks.push_back(temp1);
 
+    temp1.texture_id = 6;
+    temp1.size_pos.h = 16;
+    temp1.size_pos.w = 16;
+    temp1.size_pos.x = 80;
+    temp1.size_pos.y = 0;
+    map_blocks.push_back(temp1);
+    
     temp1.texture_id = 7;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
     temp1.size_pos.x = 0;
     temp1.size_pos.y = 16;
     map_blocks.push_back(temp1);
+    
     temp1.texture_id = 8;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
     temp1.size_pos.x = 16;
     temp1.size_pos.y = 16;
     map_blocks.push_back(temp1);
+    
     temp1.texture_id = 9;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
     temp1.size_pos.x = 32;
-    temp1.size_pos.y = 0;
+    temp1.size_pos.y = 16;
     map_blocks.push_back(temp1);
-    temp1.texture_id = 4;
+    
+    temp1.texture_id = 10;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
     temp1.size_pos.x = 48;
     temp1.size_pos.y = 16;
     map_blocks.push_back(temp1);
-    temp1.texture_id = 10;
+    
+    temp1.texture_id = 11;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
     temp1.size_pos.x = 64;
     temp1.size_pos.y = 16;
     map_blocks.push_back(temp1);
 
-    temp1.texture_id = 11;
+
+    temp1.texture_id = 12;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
     temp1.size_pos.x = 0;
     temp1.size_pos.y = 32;
     map_blocks.push_back(temp1);
-    temp1.texture_id = 12;
+    
+    temp1.texture_id = 13;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
     temp1.size_pos.x = 16;
     temp1.size_pos.y = 32;
     map_blocks.push_back(temp1);
-    temp1.texture_id = 13;
+    
+    temp1.texture_id = 14;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
     temp1.size_pos.x = 32;
     temp1.size_pos.y = 32;
     map_blocks.push_back(temp1);
-    temp1.texture_id = 14;
-    temp1.size_pos.h = 16;
-    temp1.size_pos.w = 16;
-    temp1.size_pos.x = 48;
-    temp1.size_pos.y = 32;
-    map_blocks.push_back(temp1);
     temp1.texture_id = 15;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
-    temp1.size_pos.x = 64;
+    temp1.size_pos.x = 48;
     temp1.size_pos.y = 32;
     map_blocks.push_back(temp1);
 
     temp1.texture_id = 16;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
-    temp1.size_pos.x = 80;
-    temp1.size_pos.y = 0;
+    temp1.size_pos.x = 64;
+    temp1.size_pos.y = 32;
     map_blocks.push_back(temp1);
+
+
+
 
     temp1.texture_id = 17;
     temp1.size_pos.h = 16;
@@ -212,8 +229,8 @@ Game_Data::Game_Data()
     temp1.texture_id = 24;
     temp1.size_pos.h = 16;
     temp1.size_pos.w = 16;
-    temp1.size_pos.x = 80;
-    temp1.size_pos.y = 0;
+    temp1.size_pos.x = 128;
+    temp1.size_pos.y = 48;
     map_blocks.push_back(temp1);
 
 

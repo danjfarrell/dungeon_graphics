@@ -8,13 +8,20 @@ Intro::Intro()
     size_and_pos.y=0;
     size_and_pos.w=SCREEN_WIDTH;
     size_and_pos.h=SCREEN_HEIGHT;
-
+    
       phase=0;
       f_alpha=0;
       alpha=0;
       frame_count=-1;
       current_screen=0;
         init_needed=true;
+     num_screens =0;
+     script_not_done = false;
+
+
+     text_pos_x=0;
+     text_pos_y=0;
+
      printf("end intro init\n");
 }
 
@@ -47,7 +54,14 @@ bool Intro::load_data(Core_Engine &core)
 	 for(int i=0;i<num_screens;i++)
  	 {
             splash temp;
-            n=fscanf_s(iFile,"%s\n",filename,sizeof(filename));
+
+
+            if (sizeof(filename) > static_cast<size_t>(std::numeric_limits<int>::max())) {
+                // Handle the overflow case, perhaps throw an error or return a special value
+                throw std::overflow_error("Value exceeds int range");
+            }
+
+            n=fscanf_s(iFile,"%s\n",filename, static_cast<int>(sizeof(filename)) );
     	    n=fscanf_s(iFile,"%i\n%i\n%i\n",&temp.fade_in_frame,&temp.hold,&temp.fade_out_frame);
 
     	    temp.fade_in_frame=temp.fade_in_frame*FRAMES_PER_SECOND;

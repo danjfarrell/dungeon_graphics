@@ -8,6 +8,8 @@
 #include <string.h>
 #include <cmath>
 #include <string>
+#include <iostream>
+#include <vector>
 
 
 class Core_Engine;
@@ -29,9 +31,9 @@ private:
     void troom(int lv, int xsize, int ysize, int tx, int ty, int glyph, Core_Engine& core);
 
      //void load_monster_data();
-
+    bool isWall(Core_Engine& core, int x, int y);
      
-
+    void printTextureMap(Core_Engine& core);
 
      //void add_monters(int max_y, int max_x, int level, Core_Engine& core);
      //void add_objects(int max_y,int max_x, int level, Core_Engine& core, int offset);

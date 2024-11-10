@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dungeon_graphics", "dungeon_graphics\dungeon_graphics.vcxproj", "{19358164-1352-4460-9C36-EAF3344AE649}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19358164-1352-4460-9C36-EAF3344AE649}.Debug|x64.ActiveCfg = Debug|x64
+		{19358164-1352-4460-9C36-EAF3344AE649}.Debug|x64.Build.0 = Debug|x64
+		{19358164-1352-4460-9C36-EAF3344AE649}.Debug|x86.ActiveCfg = Debug|Win32
+		{19358164-1352-4460-9C36-EAF3344AE649}.Debug|x86.Build.0 = Debug|Win32
+		{19358164-1352-4460-9C36-EAF3344AE649}.Release|x64.ActiveCfg = Release|x64
+		{19358164-1352-4460-9C36-EAF3344AE649}.Release|x64.Build.0 = Release|x64
+		{19358164-1352-4460-9C36-EAF3344AE649}.Release|x86.ActiveCfg = Release|Win32
+		{19358164-1352-4460-9C36-EAF3344AE649}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C250094D-A4AD-43D0-802E-FD86E9092940}
+	EndGlobalSection
+EndGlobal

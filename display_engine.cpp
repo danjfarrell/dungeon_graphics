@@ -152,8 +152,8 @@ int Display_Engine::Load_Texture(std::string filename, std::vector<SDL_Texture*>
         //SDL_FreeSurface(surf);
         //SDL_DestroyTexture(tex);
         tex = NULL;
-        printf("returning texture id=%d\n", textures.size() - 1);
-        return textures.size() - 1;
+        printf("returning texture id=%zd\n", textures.size() - 1);
+        return static_cast<int>(textures.size() - 1);
     }
     return -1;
 }

@@ -121,6 +121,30 @@ enum Player_Direction{P_UP,P_DOWN,P_LEFT,P_RIGHT,P_UR,P_DR,P_DL,P_UL,P_NONE};
 
 enum Player_Input_States{PLAYER_MOVEMENT,PLAYER_CASTING,PLAYER_EQUIPPING,PLAYER_ON_OBJECT};
 
+
+enum TextureID {
+    FLOOR = 25,
+    WALL = 2,
+    CORNER_TOP_LEFT = 5,
+    CORNER_TOP_RIGHT = 3,
+    CORNER_BOTTOM_LEFT = 9,
+    CORNER_BOTTOM_RIGHT = 16,
+    INTERSECTION = 6,
+    T_INTERSECTION_UP = 1,
+    T_INTERSECTION_DOWN = 8,
+    T_INTERSECTION_LEFT = 2,
+    T_INTERSECTION_RIGHT = 7,
+    END_LEFT=10,
+    END_RIGHT = 14,
+    END_UP = 12,
+    END_DOWN = 13,
+    VERTICAL = 11,
+    HORIZONTAL=15
+
+};
+
+
+
 typedef struct
 {
     int texture_id;
