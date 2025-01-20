@@ -55,16 +55,15 @@ Game_Data::Game_Data()
     errno_t err;
     err = fopen_s(&textures, "gamedata/resources/graphics/dungeon/texture_list.txt", "r");
 
-    if (err == 0)
+    if (err != 0)
     {
-        printf("The file 'crt_fopen_s.c' was opened\n");
+        printf("The file 'texture_list.txt' was not opened\n");
+        return;
     }
-    else
-    {
-        printf("The file 'crt_fopen_s.c' was not opened\n");
-    }
+
+
     int num_entries,tx,ty,th,tw,tn,n;
-    fscanf(textures, "%d\n", &num_entries);
+    n=fscanf(textures, "%d\n", &num_entries);
     MAP_BLOCK_ElEMENT temp1;
     for (int i = 0; i < num_entries; i++)
     {
@@ -78,7 +77,7 @@ Game_Data::Game_Data()
         map_blocks.push_back(temp1);
     }
 
-
+    fclose(textures);
  
     //********** 0 ***************
 
