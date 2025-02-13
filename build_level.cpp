@@ -311,6 +311,40 @@ void Build_Level::make_maze(int level,Core_Engine &core)
 
 void Build_Level::eat_rock(int lv,int y, int x, Core_Engine& core)
 {
+    
+    //std::vector<int> directions = { 1, 2, 3, 4 }; // 1=North, 2=South, 3=West, 4=East
+    //std::random_device rd;
+    //std::mt19937 g(rd());
+
+    //std::shuffle(directions.begin(), directions.end(), g); // Shuffle directions
+
+    //for (int direction : directions) 
+    //{
+    //    int nx = x, ny = y;
+
+    //    switch (direction) {
+    //    case 1: ny -= 2; break; // North
+    //    case 2: ny += 2; break; // South
+    //    case 3: nx -= 2; break; // West
+    //    case 4: nx += 2; break; // East
+    //    }
+
+    //    // Bounds check
+    //    if (nx <= 0 || ny <= 0 || nx >= MAX_X - 1 || ny >= MAX_Y - 1) continue;
+
+    //    // Ensure the path isn't already carved
+    //    if (core.game_data.dungeon_level[ny][nx].block_type == '#') {
+    //        // Clear path
+    //        core.game_data.dungeon_level[y + (ny - y) / 2][x + (nx - x) / 2].block_type = '.';
+    //        core.game_data.dungeon_level[ny][nx].block_type = '.';
+
+    //        // Recur with the new position
+    //        eat_rock(lv, ny, nx, core);
+    //    }
+    //}
+    
+    
+    
     int direction, trys;
     direction=rand()%4+1;
     //direction=2;
