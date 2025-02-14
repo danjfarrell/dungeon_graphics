@@ -656,6 +656,6 @@ int prev_state_y{};
     std::vector< MAP_BLOCK_ElEMENT> map_blocks;
 
     MAP_BLOCK dungeon_level[MAX_Y][MAX_X + 1]{};
-
+    MAP_BLOCK dungeon_level_test[MAX_Y][MAX_X + 1]{};
 };
 #endif

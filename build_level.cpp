@@ -58,7 +58,29 @@ void  Build_Level::printTextureMap(Core_Engine& core) {
 
     
 }
+void  Build_Level::test_new_print(Core_Engine& core) {
 
+    
+    //printf("testing new eat rock");
+    std::string result, temp1;  // Initialize an empty string
+    for (int i = 0; i < MAX_Y; i++)
+    {
+        result.clear();
+        for (int j = 0; j < MAX_X; j++)
+        {
+            result.push_back(core.game_data.dungeon_level_test[i][j].block_type);
+
+
+        }
+        printf("%s\n", result.c_str());
+    }
+    printf("\n");
+    
+
+
+
+
+}
 
 
 
@@ -94,6 +116,7 @@ void Build_Level::make_maze(int level,Core_Engine &core)
                 for (int j=0;j<MAX_X;j++)
                 {
                     core.game_data.dungeon_level[i][j].block_type='#';
+                    core.game_data.dungeon_level_test[i][j].block_type = '#';
                     core.game_data.dungeon_level[i][j].object=false;
                     //core.game_data.dungeon_level[i][j].object_index=-1;
                     core.game_data.dungeon_level[i][j].monster_index = -1;
@@ -106,7 +129,10 @@ void Build_Level::make_maze(int level,Core_Engine &core)
                 }
             }
             eat_rock(level,1,1, core);
-
+            printf("starting new eat rock\n");
+            eat_rock_new(level, 1, 1, core);
+            test_new_print(core);
+            printf("done\n");
             if (core.game_data.dungeon_level[1][1].block_type == '#' && core.game_data.dungeon_level[1][2].block_type == '.')
             {
                 core.game_data.dungeon_level[1][1].block_type = '.';
@@ -311,40 +337,6 @@ void Build_Level::make_maze(int level,Core_Engine &core)
 
 void Build_Level::eat_rock(int lv,int y, int x, Core_Engine& core)
 {
-    
-    //std::vector<int> directions = { 1, 2, 3, 4 }; // 1=North, 2=South, 3=West, 4=East
-    //std::random_device rd;
-    //std::mt19937 g(rd());
-
-    //std::shuffle(directions.begin(), directions.end(), g); // Shuffle directions
-
-    //for (int direction : directions) 
-    //{
-    //    int nx = x, ny = y;
-
-    //    switch (direction) {
-    //    case 1: ny -= 2; break; // North
-    //    case 2: ny += 2; break; // South
-    //    case 3: nx -= 2; break; // West
-    //    case 4: nx += 2; break; // East
-    //    }
-
-    //    // Bounds check
-    //    if (nx <= 0 || ny <= 0 || nx >= MAX_X - 1 || ny >= MAX_Y - 1) continue;
-
-    //    // Ensure the path isn't already carved
-    //    if (core.game_data.dungeon_level[ny][nx].block_type == '#') {
-    //        // Clear path
-    //        core.game_data.dungeon_level[y + (ny - y) / 2][x + (nx - x) / 2].block_type = '.';
-    //        core.game_data.dungeon_level[ny][nx].block_type = '.';
-
-    //        // Recur with the new position
-    //        eat_rock(lv, ny, nx, core);
-    //    }
-    //}
-    
-    
-    
     int direction, trys;
     direction=rand()%4+1;
     //direction=2;
@@ -407,6 +399,74 @@ void Build_Level::eat_rock(int lv,int y, int x, Core_Engine& core)
 
     return;
 }
+
+
+void Build_Level::eat_rock_new(int lv, int y, int x, Core_Engine& core, int depth)
+{
+    if (carved_tiles > MAX_CARVED_TILES) {
+        //std::cerr << "Max carved tiles reached. Stopping recursion.\n";
+        return;
+    }
+    
+    
+    if (depth > MAX_RECURSION_DEPTH) {
+        //std::cerr << "Max recursion depth reached at (" << x << ", " << y << ")\n";
+        return;  // Stop recursion to avoid a crash
+    }
+
+    if (x <= 0 || y <= 0 || x >= MAX_X - 1 || y >= MAX_Y - 1) {
+        //std::cerr << "Out of bounds: (" << x << ", " << y << ")\n";
+        return;
+    }
+
+    if (core.game_data.dungeon_level_test[y][x].block_type != '#') {
+        //std::cerr << "Already cleared: (" << x << ", " << y << ")\n";
+        return;
+    }
+    std::vector<int> directions = { 1, 2, 3, 4 }; // 1=North, 2=South, 3=West, 4=East
+    std::random_device rd;
+    std::mt19937 g(rd());
+
+    std::shuffle(directions.begin(), directions.end(), g); // Shuffle directions
+
+    core.game_data.dungeon_level_test[y][x].block_type = '.'; // Mark as path
+    //std::cerr << "Carving path at (" << x << ", " << y << ") - Depth: " << depth << "\n";
+
+    carved_tiles++; // Increment carved count
+
+    for (int direction : directions) 
+    {
+        int nx = x, ny = y;
+
+        switch (direction) {
+        case 1: ny -= 2; break; // North
+        case 2: ny += 2; break; // South
+        case 3: nx -= 2; break; // West
+        case 4: nx += 2; break; // East
+        }
+
+        // Bounds check
+        //if (nx <= 0 || ny <= 0 || nx >= MAX_X - 1 || ny >= MAX_Y - 1) continue;
+
+        // Ensure the path isn't already carved
+        if (core.game_data.dungeon_level_test[ny][nx].block_type == '#') {
+            // Clear path
+            core.game_data.dungeon_level_test[y + (ny - y) / 2][x + (nx - x) / 2].block_type = '.';
+            //core.game_data.dungeon_level_test[ny][nx].block_type = '.';
+            std::cerr << "Depth: " << depth << ", Carving (" << x << ", " << y << ") -> (" << nx << ", " << ny << ")|\n";
+            // Recur with the new position
+            eat_rock_new(lv, ny, nx, core,depth+1);
+        }
+    }
+
+
+
+
+    return;
+}
+
+
+
 
 //
 //void Build_Level::treasureroom(int lv,MAP_BLOCK dungeon[1+MAX_DUNGEON_LEVEL+MAX_VOLCANO_LEVEL][MAX_Y][MAX_X+1])

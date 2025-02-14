@@ -5,6 +5,9 @@
 #include "SDL.h"
 
 
+
+#define MAX_RECURSION_DEPTH 5000  // Prevent infinite recursion
+
 //#pragma warning(disable : 4996)
 //#pragma warning(disable : 4995)
 

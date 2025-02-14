@@ -12,6 +12,8 @@
 #include <vector>
 #include <algorithm>
 #include <random>
+#define MAX_CARVED_TILES (MAX_X * MAX_Y / 4) // Stop at 25% fill
+
 
 
 class Core_Engine;
@@ -20,12 +22,12 @@ class Build_Level
 {
 private:
 
-
+    int carved_tiles = 0; // Track total tiles carved
     int premade_offset;
 
 
     void eat_rock(int lv, int x,int y, Core_Engine& core);
-
+    void eat_rock_new(int lv, int x, int y, Core_Engine& core, int depth=0);
 
      void treasureroom(int level, Core_Engine& core);
 
@@ -36,6 +38,8 @@ private:
     bool isWall(Core_Engine& core, int x, int y);
      
     void printTextureMap(Core_Engine& core);
+
+    void test_new_print(Core_Engine& core);
 
      //void add_monters(int max_y, int max_x, int level, Core_Engine& core);
      //void add_objects(int max_y,int max_x, int level, Core_Engine& core, int offset);
