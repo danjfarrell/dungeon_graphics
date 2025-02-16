@@ -39,6 +39,7 @@ Game_Data::Game_Data()
 
             dungeon_level[i][j].player_loc = false;
             dungeon_level[i][j].visible = true;
+            //dungeon_level[i][j].visited = false;
 
             //dungeon_level[i][j].color = GOLD;
             //dungeon[i][j]='#';

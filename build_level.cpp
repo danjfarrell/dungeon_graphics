@@ -1,4 +1,4 @@
-#include "build_level.h"
+﻿#include "build_level.h"
 #include "core_engine.h"
 
 Build_Level::Build_Level()
@@ -61,7 +61,7 @@ void  Build_Level::printTextureMap(Core_Engine& core) {
 void  Build_Level::test_new_print(Core_Engine& core) {
 
     
-    //printf("testing new eat rock");
+    printf("testing new eat rock\n");
     std::string result, temp1;  // Initialize an empty string
     for (int i = 0; i < MAX_Y; i++)
     {
@@ -126,11 +126,12 @@ void Build_Level::make_maze(int level,Core_Engine &core)
                     //core.game_data.dungeon_level[i][j].color= SILVER;
                     core.game_data.dungeon_level[i][j].player_loc=false;
                     core.game_data.dungeon_level[i][j].gold = false;
+                    //core.game_data.dungeon_level[i][j].visited = false;
                 }
             }
             eat_rock(level,1,1, core);
             printf("starting new eat rock\n");
-            eat_rock_new(level, 1, 1, core);
+            eat_rock_newest(level, 1, 1, core);
             test_new_print(core);
             printf("done\n");
             if (core.game_data.dungeon_level[1][1].block_type == '#' && core.game_data.dungeon_level[1][2].block_type == '.')
@@ -401,8 +402,92 @@ void Build_Level::eat_rock(int lv,int y, int x, Core_Engine& core)
 }
 
 
+void Build_Level::eat_rock_newest(int lv, int start_y, int start_x, Core_Engine& core)
+{
+    std::stack<Position> stack;
+
+    // ✅ Ensure the starting position is open for carving
+    if (start_x <= 0 || start_y <= 0 || start_x >= MAX_X - 1 || start_y >= MAX_Y - 1) {
+        std::cerr << "Invalid starting position: (" << start_x << ", " << start_y << ")\n";
+        return;
+    }
+    core.game_data.dungeon_level_test[start_y][start_x].block_type = '.';
+    stack.push({ start_x, start_y }); // ✅ Add first position
+
+    while (!stack.empty()) {
+        Position current = stack.top();
+        stack.pop();
+
+        int x = current.x, y = current.y;
+
+        // ✅ Ensure carving within the grid
+        if (x <= 0 || y <= 0 || x >= MAX_X - 1 || y >= MAX_Y - 1) continue;
+        if (core.game_data.dungeon_level_test[y][x].block_type != '#') continue; // Already visited
+
+        // ✅ Carve the current tile
+        core.game_data.dungeon_level_test[y][x].block_type = '.';
+
+        // ✅ Randomize movement directions
+        std::vector<int> directions = { 1, 2, 3, 4 }; // 1=N, 2=S, 3=W, 4=E
+        std::random_device rd;
+        std::mt19937 g(rd());
+        std::shuffle(directions.begin(), directions.end(), g);
+
+        for (int direction : directions) {
+            int nx = x, ny = y;
+
+            switch (direction) {
+            case 1: ny -= 2; break; // North
+            case 2: ny += 2; break; // South
+            case 3: nx -= 2; break; // West
+            case 4: nx += 2; break; // East
+            }
+
+            if (nx > 0 && ny > 0 && nx < MAX_X - 1 && ny < MAX_Y - 1 &&
+                core.game_data.dungeon_level_test[ny][nx].block_type == '#') {
+
+                // ✅ Check if the tile is surrounded by walls (prevents breaking structure)
+                int wall_count = 0;
+                if (core.game_data.dungeon_level_test[ny - 1][nx].block_type == '#') wall_count++;
+                if (core.game_data.dungeon_level_test[ny + 1][nx].block_type == '#') wall_count++;
+                if (core.game_data.dungeon_level_test[ny][nx - 1].block_type == '#') wall_count++;
+                if (core.game_data.dungeon_level_test[ny][nx + 1].block_type == '#') wall_count++;
+
+                if (wall_count >= 3) {
+                    // ✅ Open a passage between current and next tile
+                    core.game_data.dungeon_level_test[y + (ny - y) / 2][x + (nx - x) / 2].block_type = '.';
+
+                    // ✅ Push the new position onto the stack
+                    stack.push({ nx, ny });
+
+                    // ✅ Debug log
+                    std::cerr << "Carving path from (" << x << ", " << y << ") to (" << nx << ", " << ny << ")\n";
+                }
+            }
+        }
+    }
+
+    // ✅ Log the final dungeon map
+    std::ofstream logFile("dungeon_log.txt");
+    for (int y = 0; y < MAX_Y; y++) {
+        for (int x = 0; x < MAX_X; x++) {
+            logFile << core.game_data.dungeon_level_test[y][x].block_type;
+        }
+        logFile << "\n";
+    }
+    logFile.close();
+
+    std::cout << "Dungeon map logged to dungeon_log.txt\n";
+
+}
+
+
+
 void Build_Level::eat_rock_new(int lv, int y, int x, Core_Engine& core, int depth)
 {
+	//test_new_print(core);
+
+
     if (carved_tiles > MAX_CARVED_TILES) {
         //std::cerr << "Max carved tiles reached. Stopping recursion.\n";
         return;
@@ -415,9 +500,10 @@ void Build_Level::eat_rock_new(int lv, int y, int x, Core_Engine& core, int dept
     }
 
     if (x <= 0 || y <= 0 || x >= MAX_X - 1 || y >= MAX_Y - 1) {
-        //std::cerr << "Out of bounds: (" << x << ", " << y << ")\n";
+        std::cerr << "Out of bounds: (" << x << ", " << y << ")\n";
         return;
     }
+
 
     if (core.game_data.dungeon_level_test[y][x].block_type != '#') {
         //std::cerr << "Already cleared: (" << x << ", " << y << ")\n";
@@ -446,7 +532,10 @@ void Build_Level::eat_rock_new(int lv, int y, int x, Core_Engine& core, int dept
         }
 
         // Bounds check
-        //if (nx <= 0 || ny <= 0 || nx >= MAX_X - 1 || ny >= MAX_Y - 1) continue;
+        if (nx <= 0 || ny <= 0 || nx >= MAX_X - 1 || ny >= MAX_Y - 1) {
+            std::cerr << "Skipping out-of-bounds move to (" << nx << ", " << ny << ")\n";
+            continue; // Prevent moving out-of-bounds
+        }
 
         // Ensure the path isn't already carved
         if (core.game_data.dungeon_level_test[ny][nx].block_type == '#') {

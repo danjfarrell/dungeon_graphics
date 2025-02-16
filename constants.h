@@ -6,7 +6,7 @@
 
 
 
-#define MAX_RECURSION_DEPTH 5000  // Prevent infinite recursion
+
 
 //#pragma warning(disable : 4996)
 //#pragma warning(disable : 4995)
@@ -174,6 +174,7 @@ typedef struct
     int prox_ripple_value;
     bool visible;
     bool spell;
+    //bool visited;
     MAP_BLOCK_ElEMENT block_data;
     //Text_Colors color;  //white=1
 } MAP_BLOCK;
