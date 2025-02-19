@@ -1,4 +1,4 @@
-#ifndef BUILD_LEVEL_H
+﻿#ifndef BUILD_LEVEL_H
 #define BUILD_LEVEL_H
 
 #include <vector>
@@ -16,7 +16,7 @@
 #include <stack>
 #define MAX_CARVED_TILES (MAX_X * MAX_Y / 4) // Stop at 25% fill
 #define MAX_RECURSION_DEPTH 137// Prevent infinite recursion
-
+#define MAX_ITERATIONS 20000  // ✅ Prevent infinite loops
 
 struct Position {
     int x, y;
