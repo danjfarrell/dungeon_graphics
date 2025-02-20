@@ -642,7 +642,7 @@ int prev_state_y{};
     int ITEM_OFFSET{ 32 };
 
 
-
+    int dungeon_tile_texture_index[5]{};
 
 
     int character_map_texture_size[1][2]{};

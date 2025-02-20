@@ -56,6 +56,7 @@ public:
     int x_count;
      int num_files;
 
+     int random_number;
 
 	 //unsigned char dungeon[MAX_Y][MAX_X+1];
 

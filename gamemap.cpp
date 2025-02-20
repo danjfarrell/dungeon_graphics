@@ -1,12 +1,19 @@
 #include "gamemap.h"
-
+#include <random>
 #include "core_engine.h"
 
 Gamemap::Gamemap()
 {
     printf("game map \n");
     //one_pass_check = false;
+    std::random_device rd;  // Seed source
+    std::mt19937 gen(rd()); // Mersenne Twister generator
 
+    // Define distribution (1 or 2)
+    std::uniform_int_distribution<int> dist(1, 2);
+
+    // Generate and print random number
+    random_number = dist(gen);
 }
 Gamemap::~Gamemap()
 {
@@ -17,14 +24,15 @@ Gamemap::~Gamemap()
 void Gamemap::load_data(Core_Engine &core)
 {
     //char filename[200];
-    int temp;
+    int temp=0;
 
 
 
     //loading texture of dungeon to see them
 
-    temp = core.disp.Load_Texture("gamedata/resources/graphics/dungeon/cave.png", textures_list, size_pos);
-
+    core.game_data.dungeon_tile_texture_index[temp] = core.disp.Load_Texture("gamedata/resources/graphics/dungeon/cave.png", textures_list, size_pos);
+    temp++;
+    core.game_data.dungeon_tile_texture_index[temp] = core.disp.Load_Texture("gamedata/resources/graphics/dungeon/Cavern.png", textures_list, size_pos);
     srand ( (unsigned int)time(NULL));
 
     printf("\n game_map load\n");
@@ -153,7 +161,7 @@ bool Gamemap::run(Core_Engine &core)
                     size.y = y * 16;
                     text_id = core.game_data.dungeon_level[y][x].block_data.texture_id;
                     //printf("%d \n", text_id);
-                    core.disp.Apply_clipped_texture(textures_list[0], &size, &core.game_data.map_blocks[text_id].size_pos);
+                    core.disp.Apply_clipped_texture(textures_list[core.game_data.dungeon_tile_texture_index[random_number]], &size, &core.game_data.map_blocks[text_id].size_pos);
                    // core.disp.Apply_clipped_texture(textures_list[0], &size, &core.game_data.map_blocks[core.game_data.dungeon_level[y][x].block_data.texture_id].size_pos);
                 }
                 else if (core.game_data.dungeon_level[y][x].spell)
