@@ -1,7 +1,9 @@
-#include <stdio.h>
-#include <iostream>
-#include <stdlib.h>
-#include <string>
+//#include <stdio.h>
+//#include <iostream>
+//#include <stdlib.h>
+//#include <string>
+
+#include "common.h"
 #include "SDL.h"
 #include "game_main.h"
 

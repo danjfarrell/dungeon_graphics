@@ -1,10 +1,12 @@
 #ifndef GAME_MAIN_H
 #define GAME_MAIN_H
 
-#include <stdio.h>
-#include <iostream>
-#include <stdlib.h>
-#include <string.h>
+//#include <stdio.h>
+//#include <iostream>
+//#include <stdlib.h>
+//#include <string.h>
+
+#include "common.h"
 
 #include "SDL.h"
 

@@ -1,9 +1,9 @@
 ﻿#ifndef BUILD_LEVEL_H
 #define BUILD_LEVEL_H
-
+/*
 #include <vector>
 #include <stdio.h>
-#include <stdlib.h>     /* atoi */
+#include <stdlib.h>     // atoi 
 #include <time.h>
 #include <string.h>
 #include <cmath>
@@ -14,7 +14,8 @@
 #include <random>
 #include <fstream>
 #include <stack>
-
+*/
+#include "common.h"
 
 
 

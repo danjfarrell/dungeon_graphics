@@ -149,7 +149,8 @@ bool Gamemap::run(Core_Engine &core)
                     //printf("here1\n");
                     
                 }
-                else if ((core.game_data.dungeon_level[y][x].block_type == '.') || (core.game_data.dungeon_level[y][x].block_type == '#'))
+                //else if ((core.game_data.dungeon_level[y][x].block_type == '.') || (core.game_data.dungeon_level[y][x].block_type == '#'))
+                else if (core.game_data.dung_chars.find(core.game_data.dungeon_level[y][x].block_type) != core.game_data.dung_chars.end())
                 {
                     //core.game_data.dungeon_level[i][j].block_data.texture_id
                    

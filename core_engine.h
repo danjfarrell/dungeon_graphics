@@ -1,7 +1,10 @@
 #ifndef CORE_ENGINE_H
 #define CORE_ENGINE_H
 
-#include <stdio.h>
+//#include <stdio.h>
+#include "common.h"
+
+
 
 #include "SDL.h"
 #include "input_sys.h"

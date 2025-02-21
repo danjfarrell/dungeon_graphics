@@ -1,14 +1,16 @@
 #ifndef Dungeon_H
 #define Dungeon_H
 
-#include <vector>
-#include <stdio.h>
-#include <stdlib.h>     /* atoi */
-#include <time.h>
-#include <string.h>
-#include <iostream>
-//#include "SDL2/SDL.h"
-#include "SDL.h"
+//#include <vector>
+//#include <stdio.h>
+//#include <stdlib.h>     /* atoi */
+//#include <time.h>
+//#include <string.h>
+//#include <iostream>
+////#include "SDL2/SDL.h"
+//#include "SDL.h"
+
+#include "common.h"
 
 #include "display_engine.h"
 #include "constants.h"

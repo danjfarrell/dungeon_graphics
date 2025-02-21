@@ -1,5 +1,6 @@
 #include "game_data.h"
 
+
 Game_Data::Game_Data()
 {
 
@@ -8,6 +9,12 @@ Game_Data::Game_Data()
     
     //character_map_texture_size[0][0] = 2048;
     //character_map_texture_size[0][1] = 1536;
+
+
+
+
+    dung_chars.insert('.');
+    dung_chars.insert('#');
 
 
     for (int i = 0; i < MAX_Y; i++)

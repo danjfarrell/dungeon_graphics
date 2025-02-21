@@ -1,12 +1,15 @@
 #ifndef DISPLAY_ENGINE_H
 #define DISPLAY_ENGINE_H
 
-#include <stdio.h>
-#include <vector>
-#include <stdlib.h>
-#include <string.h>
-//#include <windows.h>
-#include <iostream>
+//#include <stdio.h>
+//#include <vector>
+//#include <stdlib.h>
+//#include <string.h>
+////#include <windows.h>
+//#include <iostream>
+
+#include "common.h"
+
 #include <SDL.h>
 #include "SDL_image.h"
 #include "SDL_ttf.h"

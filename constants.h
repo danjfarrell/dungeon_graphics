@@ -1,7 +1,8 @@
 #ifndef _CONSTANTS_H
 #define _CONSTANTS_H
 
-#include <string>
+//#include <string>
+#include "common.h"
 #include "SDL.h"
 
 

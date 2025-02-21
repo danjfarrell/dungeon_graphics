@@ -1,13 +1,17 @@
 #ifndef Gamemap_H
 #define Gamemap_H
-
+/*
 #include <stdio.h>
-#include <stdlib.h>     /* atoi */
+#include <stdlib.h>     // atoi 
 #include <time.h>
 #include <string.h>
 
 #include <iostream>
 #include <vector>
+#include <unordered_set>
+*/
+#include "common.h"
+
 #include "SDL.h"
 //#include "display_engine.h"
 #include "constants.h"

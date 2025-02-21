@@ -2,13 +2,15 @@
 #define INTRO_H
 
 //#include <SDL2/SDL.h>
-#include <vector>
-#include <stdio.h>
-#include <stdlib.h>     /* atoi */
-#include <time.h>
-#include <string.h>
-#include <string>
-#include <iostream>
+//#include <vector>
+//#include <stdio.h>
+//#include <stdlib.h>     // atoi 
+//#include <time.h>
+//#include <string.h>
+//#include <string>
+//#include <iostream>
+
+#include "common.h"
 #include "input_sys.h"
 #include "core_engine.h"
 #include "constants.h"

@@ -1,15 +1,21 @@
 #ifndef PLAY_H
 #define PLAY_H
 
-#include <vector>
-#include <stdio.h>
-#include <stdlib.h>     /* atoi */
-#include <time.h>
-#include <string.h>
-#include <iostream>
-#include <queue>
-#include <stdio.h>
-#include "SDL.h"
+//#include <vector>
+//#include <stdio.h>
+//#include <stdlib.h>     /* atoi */
+//#include <time.h>
+//#include <string.h>
+//#include <iostream>
+//#include <queue>
+//#include <stdio.h>
+//#include "SDL.h"
+// 
+// 
+
+#include "common.h"
+
+// 
 //#include "display_engine.h"
 //#include "input_sys.h"
 #include "core_engine.h"

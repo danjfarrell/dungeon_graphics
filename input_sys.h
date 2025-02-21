@@ -4,8 +4,11 @@
 //#include "SDL2/SDL.h"
 //#include "SDl2/SDL_image.h"
 //#include "SDL2/SDL_ttf.h"
-#include <stdio.h>
-#include <SDL.h>
+//
+// #include <stdio.h>
+
+#include "common.h"
+//#include <SDL.h>
 #include "constants.h"
 
 //The INPUT SYSTEM, handles mouse events and keyboard events for all of the various game states..

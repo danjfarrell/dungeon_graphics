@@ -2,11 +2,14 @@
 #define GAME_DATA_H
 
 
-#include <stdio.h>
-#include <vector>
+//#include <stdio.h>
+//#include <vector>
+#include "common.h"
+
 #include "constants.h"
 //#include "game_defines.h"
 //#include "player.h"
+//#include <unordered_set>
 
 class Game_Data
 {
@@ -643,6 +646,8 @@ int prev_state_y{};
 
 
     int dungeon_tile_texture_index[5]{};
+
+    std::unordered_set<char> dung_chars;
 
 
     int character_map_texture_size[1][2]{};
