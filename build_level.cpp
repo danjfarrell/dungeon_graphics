@@ -324,7 +324,7 @@ void Build_Level::make_maze(int level,Core_Engine &core)
         }
     }
     //printTextureMap(core);
-
+    core.game_data.dungeon_level[MAX_Y-1][MAX_X/2].block_data.texture_id = DOOR;
    
 
     fclose(output_check);

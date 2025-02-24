@@ -128,7 +128,7 @@ enum Player_Input_States{PLAYER_MOVEMENT,PLAYER_CASTING,PLAYER_EQUIPPING,PLAYER_
 
 enum TextureID {
     FLOOR = 25,
-    WALL = 2,
+    //WALL = 2,
     CORNER_TOP_LEFT = 5,
     CORNER_TOP_RIGHT = 3,
     CORNER_BOTTOM_LEFT = 9,
@@ -143,7 +143,8 @@ enum TextureID {
     END_UP = 12,
     END_DOWN = 13,
     VERTICAL = 11,
-    HORIZONTAL=15
+    HORIZONTAL=15,
+    DOOR = 4
 
 };
 

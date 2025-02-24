@@ -646,6 +646,8 @@ int prev_state_y{};
 
 
     int dungeon_tile_texture_index[5]{};
+    int current_map{ 0 }; //this is the current texture file for the map
+    int current_map_set{ 1 }; // this is whether the first or second map is being used
 
     std::unordered_set<char> dung_chars;
     std::unordered_map<int, MAP_BLOCK_ElEMENT> umap_blocks;

@@ -10,7 +10,14 @@ Game_Data::Game_Data()
     //character_map_texture_size[0][0] = 2048;
     //character_map_texture_size[0][1] = 1536;
 
+    std::random_device rd;  // Seed source
+    std::mt19937 gen(rd()); // Mersenne Twister generator
 
+    // Define distribution (1 or 2)
+    std::uniform_int_distribution<int> dist(1, 2);
+
+    // Generate and print random number
+    current_map = dist(gen);
 
 
     dung_chars.insert('.');
@@ -82,7 +89,7 @@ Game_Data::Game_Data()
         temp1.size_pos.w = tw;
         temp1.size_pos.x = tx;
         temp1.size_pos.y = ty;
-        map_blocks.push_back(temp1);
+        //map_blocks.push_back(temp1);
         umap_blocks[tn] = temp1;
     }
 

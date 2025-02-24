@@ -6,14 +6,7 @@ Gamemap::Gamemap()
 {
     printf("game map \n");
     //one_pass_check = false;
-    std::random_device rd;  // Seed source
-    std::mt19937 gen(rd()); // Mersenne Twister generator
 
-    // Define distribution (1 or 2)
-    std::uniform_int_distribution<int> dist(1, 2);
-
-    // Generate and print random number
-    random_number = dist(gen);
 }
 Gamemap::~Gamemap()
 {
@@ -160,9 +153,12 @@ bool Gamemap::run(Core_Engine &core)
                     size.w = 16;
                     size.x = x * 16;
                     size.y = y * 16;
-                    text_id = core.game_data.dungeon_level[y][x].block_data.texture_id;
+                    text_id = (core.game_data.dungeon_level[y][x].block_data.texture_id * core.game_data.current_map_set);
                     //printf("%d \n", text_id);
-                    core.disp.Apply_clipped_texture(textures_list[core.game_data.dungeon_tile_texture_index[random_number]], &size, &core.game_data.map_blocks[text_id].size_pos);
+                    
+                    core.disp.Apply_clipped_texture(textures_list[core.game_data.dungeon_tile_texture_index[core.game_data.current_map]], &size, &core.game_data.umap_blocks[text_id].size_pos);
+                    
+                    //core.disp.Apply_clipped_texture(textures_list[core.game_data.dungeon_tile_texture_index[random_number]], &size, &core.game_data.map_blocks[text_id].size_pos);
                    // core.disp.Apply_clipped_texture(textures_list[0], &size, &core.game_data.map_blocks[core.game_data.dungeon_level[y][x].block_data.texture_id].size_pos);
                 }
                 else if (core.game_data.dungeon_level[y][x].spell)
