@@ -83,10 +83,14 @@ Game_Data::Game_Data()
         temp1.size_pos.x = tx;
         temp1.size_pos.y = ty;
         map_blocks.push_back(temp1);
+        umap_blocks[tn] = temp1;
     }
 
     fclose(textures);
  
+    for (auto x : umap_blocks)
+        std::cout << x.first <<  std::endl;
+
     //********** 0 ***************
 
     /*

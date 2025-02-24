@@ -648,7 +648,7 @@ int prev_state_y{};
     int dungeon_tile_texture_index[5]{};
 
     std::unordered_set<char> dung_chars;
-
+    std::unordered_map<int, MAP_BLOCK_ElEMENT> umap_blocks;
 
     int character_map_texture_size[1][2]{};
 
