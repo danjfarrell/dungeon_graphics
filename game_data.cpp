@@ -66,34 +66,55 @@ Game_Data::Game_Data()
 
     }
     
-    FILE* textures;
-    errno_t err;
-    err = fopen_s(&textures, "gamedata/resources/graphics/dungeon/texture_list.txt", "r");
+    //FILE* textures;
+    //errno_t err;
+    //err = fopen_s(&textures, "gamedata/resources/graphics/dungeon/texture_list.txt", "r");
 
-    if (err != 0)
-    {
-        printf("The file 'texture_list.txt' was not opened\n");
+    //if (err != 0)
+    //{
+    //    printf("The file 'texture_list.txt' was not opened\n");
+    //    return;
+    //}
+
+    std::ifstream textures("gamedata/resources/graphics/dungeon/texture_list.txt"); // Open file
+
+    if (!textures) {
+        std::cerr << "Error opening file." << std::endl;
         return;
     }
 
-
     int num_entries,tx,ty,th,tw,tn,n;
-    n=fscanf(textures, "%d\n", &num_entries);
     MAP_BLOCK_ElEMENT temp1;
-    for (int i = 0; i < num_entries; i++)
-    {
-        n= fscanf(textures, "%d %d %d %d %d\n", &tn, &th, &tw, &tx, &ty);
-        printf("%d %d %d %d %d\n", tn, th, tw, tx, ty);
+
+    while (textures >> tn >> th >> tw >> tx >> ty) { // Read until EOF
+        std::cout << tn << " " << th << " " << tw << " " << tx << " " << ty << std::endl;
         temp1.texture_id = tn;
         temp1.size_pos.h = th;
         temp1.size_pos.w = tw;
         temp1.size_pos.x = tx;
         temp1.size_pos.y = ty;
-        //map_blocks.push_back(temp1);
         umap_blocks[tn] = temp1;
     }
 
-    fclose(textures);
+    textures.close(); // Close file
+
+
+    //n=fscanf(textures, "%d\n", &num_entries);
+    
+    //for (int i = 0; i < num_entries; i++)
+    //{
+    //    n= fscanf(textures, "%d %d %d %d %d\n", &tn, &th, &tw, &tx, &ty);
+    //    printf("%d %d %d %d %d\n", tn, th, tw, tx, ty);
+    //    temp1.texture_id = tn;
+    //    temp1.size_pos.h = th;
+    //    temp1.size_pos.w = tw;
+    //    temp1.size_pos.x = tx;
+    //    temp1.size_pos.y = ty;
+    //    //map_blocks.push_back(temp1);
+    //    umap_blocks[tn] = temp1;
+    //}
+
+    //fclose(textures);
  
     for (auto x : umap_blocks)
         std::cout << x.first <<  std::endl;
