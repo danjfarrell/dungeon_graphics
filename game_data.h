@@ -651,7 +651,7 @@ int prev_state_y{};
 
     std::unordered_set<char> dung_chars;
     std::unordered_map<int, MAP_BLOCK_ElEMENT> umap_blocks;
-
+    std::vector< std::unordered_map<int, MAP_BLOCK_ElEMENT>> list_map_block_sets;
     int character_map_texture_size[1][2]{};
 
     SDL_Rect display_characters_sizepos[256]{};
