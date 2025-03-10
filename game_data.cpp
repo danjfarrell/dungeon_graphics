@@ -76,6 +76,31 @@ Game_Data::Game_Data()
     //    return;
     //}
 
+
+    int num_entries, tx, ty, th, tw, tn, n;
+
+    std::ifstream list_of_textures("gamedata/resources/graphics/dungeon/list_of_textures.txt");
+    if (!list_of_textures) {
+        std::cerr << "Error opening file." << std::endl;
+        return;
+    }
+    std::string lot;
+    while (list_of_textures >> lot) { // Read until EOF
+        std::cout << lot << std::endl;
+        std::ifstream textures(lot); // Open file
+        if (!textures) {
+            std::cerr << "Error opening file." << std::endl;
+            return;
+        }
+        while (textures >> tn >> th >> tw >> tx >> ty) { // Read until EOF
+            std::cout << tn << " " << th << " " << tw << " " << tx << " " << ty << std::endl;
+        }
+        textures.close(); // Close file
+        std::cout << lot << std::endl;
+    }
+
+
+
     std::ifstream textures("gamedata/resources/graphics/dungeon/texture_list.txt"); // Open file
 
     if (!textures) {
@@ -83,7 +108,7 @@ Game_Data::Game_Data()
         return;
     }
 
-    int num_entries,tx,ty,th,tw,tn,n;
+    //int num_entries,tx,ty,th,tw,tn,n;
     MAP_BLOCK_ElEMENT temp1;
 
     while (textures >> tn >> th >> tw >> tx >> ty) { // Read until EOF
